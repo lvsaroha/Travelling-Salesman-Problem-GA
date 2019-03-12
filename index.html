@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TSP Genetic Algorithm</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+</head>
+
+<body style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="container mb-4 mt-4" style="max-width: 920px;">
+        <center class="mb-4">
+            <!-- Title -->
+            <h3>
+                <font class="text-theme">T</font>ravelling <font class="text-theme">S</font>alesman <font class="text-theme">P</font>roblem <small class="text-muted"> ( Genetic Algorithm )</small>
+            </h3>
+            <font style="color: #888 !important;">What is the shortest possible route that visits each city and returns
+                to the origin city?</font>
+        </center>
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="form-group">
+                    <!-- Population size configuration -->
+                    <label for="exampleSelect1" class="text-muted">Population Size</label>
+                    <select class="custom-select" id="maxpop_id" oninput="javascript: newMaxPop = parseInt(this.value);">
+                        <option selected value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                        <option value="600">600</option>
+                        <option value="800">800</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <!-- Mutation rate -->
+                    <label for="exampleSelect1" class="text-muted">Mutation Rate</label>
+                    <select class="custom-select" id="mutation_rate_id" oninput="javascript: newMutationRate = parseFloat(this.value);">
+                        <option selected value="0.01">0.01</option>
+                        <option value="0.05">0.05</option>
+                        <option value="0.08">0.08</option>
+                        <option value="0.1">0.1</option>
+                        <option value="0.3">0.3</option>
+                        <option value="0.9">0.9</option>
+                        <option value="2.9">2.9</option>
+                        <option value="4.9">4.9</option>
+                        <option value="6.9">6.9</option>
+                        <option value="16.9">16.9</option>
+                        <option value="36.9">36.9</option>
+                        <option value="56.9">56.9</option>
+                        <option value="76.9">76.9</option>
+                        <option value="96.9">96.9</option>
+                        <option value="99.9">99.9</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <!-- Maximum genrations -->
+                    <label for="exampleSelect1" class="text-muted">Maximum Generations</label>
+                    <select class="custom-select" id="maxgen_id" oninput="javascript: newGen = parseInt(this.value);">
+                        <option selected value="800">800</option>
+                        <option value="1000">1000</option>
+                        <option value="1300">1300</option>
+                        <option value="1600">1600</option>
+                        <option value="2000">2000</option>
+                    </select>
+                </div>
+                <button class="btn btn-theme ml-2" onclick="javascript: this.childNodes[1].data = ' ReStart'; start();"><i class="fas fa-caret-right"></i> START</button>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <form onsubmit="javascript: addCity(event)">
+                    <div class="form-group">
+                        <!-- Add cities -->
+                        <label for="exampleSelect1" class="text-muted">Add atleast 3 cities in route to start genetic
+                            algorithm</label>
+                        <select class="custom-select" name="city" id="cities_select_id">
+                            <option selected value="0">Delhi</option>
+                            <option value="1">Kolkata</option>
+                            <option value="2">New York</option>
+                            <option value="3">Mexico City</option>
+                            <option value="4">London</option>
+                            <option value="5">Paris</option>
+                            <option value="6">Moscow</option>
+                            <option value="7">Tokyo</option>
+                            <option value="8">Madrid</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="buttons_id">
+                        <button class="btn btn-theme"><i class="fa fa-plus"></i> ADD TO MAP</button>
+                    </div>
+                </form>
+                <!-- Showing results -->
+                <h5 class="text-muted">Generations <small id="generations_id" style="color: #888;">0</small></h5>
+                <h5 class="text-muted">Avg Fitness <small id="avgfitness_id" style="color: #888;">0</small></h5>
+                <h5 class="text-muted" id="est_time_id"></h5>
+            </div>
+        </div>
+    </div>
+    <img src="./assets/images/map.svg" class="d-none" id="map_img_id">
+    <center>
+        <!-- Canvas with map image  -->
+        <canvas class="canvas" height="500" width="920" id="myCanvas"></canvas>
+    </center>
+    <center class="mt-4">
+        <!-- About info -->
+        <h5 class="text-muted">
+            <font class="text-theme">By</font> Love Saroha <small>(lvsaroha@gmail.com)</small>
+        </h5>
+        <i class="fab fa-github text-muted"></i><a href="https://github.com/lvsaroha" style="text-decoration: underline;" class="text-theme"> https://github.com/lvsaroha</a>
+        <font class="text-muted">(Source Code)</font>
+    </center>
+    <!-- Include script.js file -->
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+
+</html>
